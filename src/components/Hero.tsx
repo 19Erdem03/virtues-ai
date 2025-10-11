@@ -10,7 +10,7 @@ export default function Hero({ onBookCall }: HeroProps) {
   const { elementRef: heroRef, isVisible: heroVisible } = useScrollAnimation();
 
   return (
-    <section id="hero" className="min-h-screen bg-white text-black relative overflow-hidden flex items-center justify-center">
+    <section id="hero" className="min-h-screen bg-white text-black relative overflow-hidden flex items-center justify-center pt-20 md:pt-0">
       <div className="relative z-10 max-w-7xl mx-auto px-6 text-center">
         <div 
           ref={heroRef}
@@ -27,7 +27,6 @@ export default function Hero({ onBookCall }: HeroProps) {
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed tracking-wide">
             We provide custom automation solutions: helping roofers capture leads, handle customer support and automate calls, and giving recruiters automated resume screening to save hours daily.
           </p>
-
           <button
             onClick={() => onBookCall()}
             className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-lg transition-all duration-300 hover:scale-105 tracking-wide shadow-lg hover:shadow-blue-500/20"
