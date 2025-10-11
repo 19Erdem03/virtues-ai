@@ -1,133 +1,326 @@
-import React from 'react';
-import { Shield, TrendingUp, Clock, CheckCircle } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import React, { useState, useEffect, useRef } from 'react';
+import { Shield, TrendingUp, Clock, CheckCircle, ArrowUp, Zap, Rocket, Crown, ChevronDown } from 'lucide-react';
 
-export default function Guarantee() {
-  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation();
-  const { elementRef: contentRef, isVisible: contentVisible } = useScrollAnimation();
+export default function CombinedSection({ onBookCall, faqs = [] }) {
+  const [openFaq, setOpenFaq] = useState(null);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [contentVisible, setContentVisible] = useState(false);
+  const headerRef = useRef(null);
+  const contentRef = useRef(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.target === headerRef.current) {
+            setHeaderVisible(entry.isIntersecting);
+          }
+          if (entry.target === contentRef.current) {
+            setContentVisible(entry.isIntersecting);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
+
+    if (headerRef.current) observer.observe(headerRef.current);
+    if (contentRef.current) observer.observe(contentRef.current);
+
+    return () => observer.disconnect();
+  }, []);
+
+  const toggleFaq = (index) => {
+    setOpenFaq(openFaq === index ? null : index);
+  };
 
   return (
-    <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
-      <div className="container mx-auto px-6">
-        <div
-          ref={headerRef}
-          className={`text-center mb-16 transition-all duration-800 ${
-            headerVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="flex items-center justify-center mb-6">
-            <Shield className="w-16 h-16 text-blue-600" />
+    <>
+      {/* CTA and Pricing Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
+              Grow Your Business Starting Today
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
+              Every day you wait is another day your competitors are getting ahead. Our AI automation systems are ready to deploy immediately, giving you back hours of time while increasing revenue. Whether you're in roofing, recruiting, or any service business, we have proven solutions that start working from day one. Schedule your free strategy call today and discover how AI can transform your business operations.
+            </p>
+            <button
+              onClick={onBookCall}
+              className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-lg transition-all duration-300 hover:scale-105 tracking-wide shadow-lg hover:shadow-blue-500/20"
+            >
+              <div className="flex items-center justify-center gap-3">
+                <ArrowUp className="w-5 h-5" />
+                <span>Book a Strategy Call</span>
+              </div>
+            </button>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-            Our Guarantee
-          </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            We stand behind our AI solutions with a promise of real, measurable results
-          </p>
-        </div>
 
-        <div
-          ref={contentRef}
-          className={`max-w-5xl mx-auto transition-all duration-800 animation-delay-200 ${
-            contentVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
-          }`}
-        >
-          <div className="bg-white rounded-2xl border-2 border-blue-200 shadow-2xl overflow-hidden">
-            <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-12 text-center">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                Results Within 30 Days or Your Money Back
-              </h3>
-              <p className="text-xl text-blue-100">
-                We're so confident in our AI solutions that we guarantee measurable improvements to your business within the first month.
-              </p>
+          <div className="max-w-6xl mx-auto mt-20">
+            <h3 className="text-3xl md:text-4xl font-bold text-black mb-4 text-center tracking-tight">
+              Choose Your Package
+            </h3>
+            <p className="text-lg text-gray-600 text-center mb-12 max-w-2xl mx-auto">
+              Select the plan that best fits your business needs and growth goals
+            </p>
+
+            <div className="grid md:grid-cols-3 gap-8 mb-20">
+              <div className="bg-white rounded-xl border-2 border-blue-200 p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">
+                  <Zap className="w-6 h-6 text-blue-600" />
+                </div>
+                <h4 className="text-2xl font-bold text-black mb-2">Starter</h4>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-blue-600">$1,000</span>
+                  <span className="text-gray-600">/month</span>
+                </div>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Support Automation</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Lead Capture</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onBookCall(undefined, ['Support Automation', 'Lead Capture Systems'])}
+                  className="w-full py-3 px-6 border-2 border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300"
+                >
+                  Get Started
+                </button>
+              </div>
+
+              <div className="bg-gradient-to-br from-blue-600 to-blue-700 rounded-xl p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 relative">
+                <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 bg-yellow-400 text-black text-sm font-bold px-4 py-1 rounded-full">
+                  MOST POPULAR
+                </div>
+                <div className="flex items-center justify-center w-12 h-12 bg-white/20 rounded-lg mb-4">
+                  <Rocket className="w-6 h-6 text-white" />
+                </div>
+                <h4 className="text-2xl font-bold text-white mb-2">Growth</h4>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-white">$5,000</span>
+                  <span className="text-blue-100">/month</span>
+                </div>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-white">Everything in Starter</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-white flex-shrink-0 mt-0.5" />
+                    <span className="text-white">Websites</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onBookCall(undefined, ['Support Automation', 'Lead Capture Systems', 'Websites'])}
+                  className="w-full py-3 px-6 bg-white text-blue-600 font-bold rounded-lg hover:bg-blue-50 transition-all duration-300"
+                >
+                  Get Started
+                </button>
+              </div>
+
+              <div className="bg-white rounded-xl border-2 border-blue-200 p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2">
+                <div className="flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">
+                  <Crown className="w-6 h-6 text-blue-600" />
+                </div>
+                <h4 className="text-2xl font-bold text-black mb-2">Scale</h4>
+                <div className="mb-6">
+                  <span className="text-4xl font-bold text-blue-600">$8,000</span>
+                  <span className="text-gray-600">/month</span>
+                </div>
+                <div className="space-y-3 mb-8">
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Everything in Growth</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Phone Caller Systems</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Hiring Systems</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-blue-600 flex-shrink-0 mt-0.5" />
+                    <span className="text-gray-700">Additional Services</span>
+                  </div>
+                </div>
+                <button
+                  onClick={() => onBookCall(undefined, ['Support Automation', 'Lead Capture Systems', 'Websites', 'Phone Caller Systems', 'Hiring Systems', 'Additional Services'])}
+                  className="w-full py-3 px-6 border-2 border-blue-600 text-blue-600 font-bold rounded-lg hover:bg-blue-600 hover:text-white transition-all duration-300"
+                >
+                  Get Started
+                </button>
+              </div>
             </div>
 
-            <div className="p-8 md:p-12">
-              <div className="grid md:grid-cols-3 gap-8 mb-12">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <TrendingUp className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h4 className="text-xl font-bold text-black mb-3">
-                    Increased Revenue
-                  </h4>
-                  <p className="text-gray-600">
-                    See measurable growth in lead conversion and sales within 30 days
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <Clock className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h4 className="text-xl font-bold text-black mb-3">
-                    Time Saved
-                  </h4>
-                  <p className="text-gray-600">
-                    Reduce manual work by at least 20 hours per week through automation
-                  </p>
-                </div>
-
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <CheckCircle className="w-8 h-8 text-blue-600" />
-                  </div>
-                  <h4 className="text-xl font-bold text-black mb-3">
-                    Zero Risk
-                  </h4>
-                  <p className="text-gray-600">
-                    If you don't see results, we'll refund 100% of your investment
-                  </p>
-                </div>
-              </div>
-
-              <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 md:p-8">
-                <h4 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
-                  What You Get With Every Solution:
-                </h4>
-                <div className="space-y-6">
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                      <strong className="text-lg md:text-lg">Rapid Deployment:</strong> Your AI solution will be live and operational within 7 days
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                      <strong className="text-lg md:text-lg">Dedicated Support:</strong> Direct access to our team for troubleshooting and optimization
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                      <strong className="text-lg md:text-lg">Performance Tracking:</strong> Real-time analytics dashboard showing your ROI and key metrics
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                      <strong className="text-lg md:text-lg">Continuous Optimization:</strong> Weekly refinements to improve performance and results
-                    </p>
-                  </div>
-                  <div className="flex items-start gap-3 md:gap-4">
-                    <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                    <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                      <strong className="text-lg md:text-lg">Full Ownership:</strong> You own all data, leads, and systems we build for you
-                    </p>
+            <h3 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center tracking-tight">
+              Frequently Asked Questions
+            </h3>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg border-2 border-blue-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-blue-50 transition-colors duration-200"
+                  >
+                    <span className="text-lg font-bold text-black pr-4">
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={`w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300 ${
+                        openFaq === index ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openFaq === index ? 'max-h-96' : 'max-h-0'
+                    }`}
+                  >
+                    <div className="px-6 py-5 bg-blue-50 border-t-2 border-blue-200">
+                      <p className="text-gray-700 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
 
-              <div className="mt-8 text-center">
-                <p className="text-gray-600 text-lg italic">
-                  "We don't get paid unless you get results. That's how confident we are in our solutions."
+      {/* Guarantee Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
+        <div className="container mx-auto px-6">
+          <div
+            ref={headerRef}
+            className={`text-center mb-16 transition-all duration-800 ${
+              headerVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="flex items-center justify-center mb-6">
+              <Shield className="w-16 h-16 text-blue-600" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
+              Our Guarantee
+            </h2>
+            <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+              We stand behind our AI solutions with a promise of real, measurable results
+            </p>
+          </div>
+
+          <div
+            ref={contentRef}
+            className={`max-w-5xl mx-auto transition-all duration-800 animation-delay-200 ${
+              contentVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <div className="bg-white rounded-2xl border-2 border-blue-200 shadow-2xl overflow-hidden">
+              <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-12 text-center">
+                <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+                  Results Within 30 Days or Your Money Back
+                </h3>
+                <p className="text-xl text-blue-100">
+                  We're so confident in our AI solutions that we guarantee measurable improvements to your business within the first month.
                 </p>
               </div>
+
+              <div className="p-8 md:p-12">
+                <div className="grid md:grid-cols-3 gap-8 mb-12">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <TrendingUp className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h4 className="text-xl font-bold text-black mb-3">
+                      Increased Revenue
+                    </h4>
+                    <p className="text-gray-600">
+                      See measurable growth in lead conversion and sales within 30 days
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <Clock className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h4 className="text-xl font-bold text-black mb-3">
+                      Time Saved
+                    </h4>
+                    <p className="text-gray-600">
+                      Reduce manual work by at least 20 hours per week through automation
+                    </p>
+                  </div>
+
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <CheckCircle className="w-8 h-8 text-blue-600" />
+                    </div>
+                    <h4 className="text-xl font-bold text-black mb-3">
+                      Zero Risk
+                    </h4>
+                    <p className="text-gray-600">
+                      If you don't see results, we'll refund 100% of your investment
+                    </p>
+                  </div>
+                </div>
+
+                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 md:p-8">
+                  <h4 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
+                    What You Get With Every Solution:
+                  </h4>
+                  <div className="space-y-6">
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                        <strong className="text-lg md:text-lg">Rapid Deployment:</strong> Your AI solution will be live and operational within 7 days
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                        <strong className="text-lg md:text-lg">Dedicated Support:</strong> Direct access to our team for troubleshooting and optimization
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                        <strong className="text-lg md:text-lg">Performance Tracking:</strong> Real-time analytics dashboard showing your ROI and key metrics
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                        <strong className="text-lg md:text-lg">Continuous Optimization:</strong> Weekly refinements to improve performance and results
+                      </p>
+                    </div>
+                    <div className="flex items-start gap-3 md:gap-4">
+                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
+                        <strong className="text-lg md:text-lg">Full Ownership:</strong> You own all data, leads, and systems we build for you
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="mt-8 text-center">
+                  <p className="text-gray-600 text-lg italic">
+                    "We don't get paid unless you get results. That's how confident we are in our solutions."
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
