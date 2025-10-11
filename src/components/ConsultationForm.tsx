@@ -152,20 +152,20 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
               </p>
               <div className="grid md:grid-cols-3 gap-6 max-w-2xl mx-auto text-gray-600">
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <Calendar className="w-6 h-6 text-pink-500" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <Calendar className="w-6 h-6 text-blue-600" />
                   </div>
                   <p className="tracking-wide">30-minute consultation</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <MessageSquare className="w-6 h-6 text-pink-500" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <MessageSquare className="w-6 h-6 text-blue-600" />
                   </div>
                   <p className="tracking-wide">Custom AI roadmap</p>
                 </div>
                 <div className="text-center">
-                  <div className="w-12 h-12 bg-pink-100 rounded-lg flex items-center justify-center mx-auto mb-3">
-                    <User className="w-6 h-6 text-pink-500" />
+                  <div className="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center mx-auto mb-3">
+                    <User className="w-6 h-6 text-blue-600" />
                   </div>
                   <p className="tracking-wide">No obligation</p>
                 </div>
@@ -207,7 +207,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                         required
                         value={formData.name}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
+                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
                       />
                     </div>
 
@@ -220,7 +220,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                         required
                         value={formData.email}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
+                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
                       />
                     </div>
 
@@ -232,7 +232,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                         placeholder="Phone Number (Optional)"
                         value={formData.phone}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
+                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
                       />
                     </div>
 
@@ -244,7 +244,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                         placeholder="Company Name"
                         value={formData.company}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
+                        className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono"
                       />
                     </div>
 
@@ -254,7 +254,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                         <button
                           type="button"
                           onClick={toggleServicesDropdown}
-                          className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black focus:border-pink-500 focus:outline-none transition-colors duration-200 text-left font-mono"
+                          className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black focus:border-blue-500 focus:outline-none transition-colors duration-200 text-left font-mono"
                         >
                           <span className="text-black tracking-wide">
                             {formData.services.length === 0 
@@ -278,7 +278,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                                     type="checkbox"
                                     checked={formData.services.includes(service.title)}
                                     onChange={() => handleServiceChange(service.title)}
-                                    className="w-4 h-4 bg-white border border-gray-300 rounded-sm checked:bg-pink-500 checked:border-pink-500 focus:ring-2 focus:ring-pink-500 focus:ring-offset-0 transition-colors duration-200"
+                                    className="w-4 h-4 bg-white border border-gray-300 rounded-sm checked:bg-blue-600 checked:border-blue-600 focus:ring-2 focus:ring-blue-500 focus:ring-offset-0 transition-colors duration-200"
                                   />
                                   <span className="text-black group-hover:text-gray-600 transition-colors duration-200 tracking-wide font-mono">
                                     {service.title}
@@ -297,7 +297,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                         name="preferredTime"
                         value={formData.preferredTime}
                         onChange={handleChange}
-                        className="w-full pl-12 pr-8 py-4 bg-white border border-gray-300 rounded-lg text-black focus:border-pink-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono appearance-none relative z-0"
+                        className="w-full pl-12 pr-8 py-4 bg-white border border-gray-300 rounded-lg text-black focus:border-blue-500 focus:outline-none transition-colors duration-200 tracking-wide font-mono appearance-none relative z-0"
                         style={{
                           backgroundImage: `url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6,9 12,15 18,9'%3e%3c/polyline%3e%3c/svg%3e")`,
                           backgroundRepeat: 'no-repeat',
@@ -321,7 +321,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                       rows={6}
                       value={formData.message}
                       onChange={handleChange}
-                      className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-pink-500 focus:outline-none transition-colors duration-200 resize-none tracking-wide font-mono"
+                      className="w-full pl-12 pr-4 py-4 bg-white border border-gray-300 rounded-lg text-black placeholder-gray-500 focus:border-blue-500 focus:outline-none transition-colors duration-200 resize-none tracking-wide font-mono"
                     ></textarea>
                   </div>
 
@@ -329,7 +329,7 @@ export default function ConsultationForm({ onBack, onHome, selectedService = '' 
                     <button
                       type="submit"
                       disabled={isSubmitting || !isFormValid}
-                      className="relative px-12 py-5 bg-pink-500 hover:bg-pink-600 text-white font-bold rounded-lg text-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 tracking-wide font-mono shadow-lg hover:shadow-pink-500/20"
+                      className="relative px-12 py-5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-xl transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 tracking-wide font-mono shadow-lg hover:shadow-blue-500/20"
                     >
                       {isSubmitting ? (
                         <div className="relative z-10 flex items-center justify-center gap-3">
