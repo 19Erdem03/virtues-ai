@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Navigation from './components/Navigation';
 import Hero from './components/Hero';
+import ProblemSection from './components/ProblemSection';
 import AboutUs from './components/AboutUs';
 import Features from './components/Features';
 import Services from './components/Services';
@@ -65,6 +66,7 @@ function App() {
         onHome={undefined}
       />
       <Hero onBookCall={handleBookCall} />
+      <ProblemSection onBookCall={handleBookCall} />
       <AboutUs />
       <Features />
       <Services onBookCall={handleBookCall} />
