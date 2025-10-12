@@ -76,68 +76,6 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
 
   return (
     <>
-      {/* CTA and Pricing Section */}
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-              Grow Your Business Starting Today
-            </h3>
-            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
-              Every day you wait is another day your competitors are getting ahead. Our AI automation systems are ready to deploy immediately, giving you back hours of time while increasing revenue. Whether you're in roofing, recruiting, or any service business, we have proven solutions that start working from day one. Schedule your free strategy call today and discover how AI can transform your business operations.
-            </p>
-            <button
-              onClick={handleBookCall}
-              className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-lg transition-all duration-300 hover:scale-105 tracking-wide shadow-lg hover:shadow-blue-500/20"
-            >
-              <div className="flex items-center justify-center gap-3">
-                <ArrowUp className="w-5 h-5" />
-                <span>Book a Strategy Call</span>
-              </div>
-            </button>
-          </div>
-
-          <div className="max-w-6xl mx-auto mt-20">
-            <h3 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center tracking-tight">
-              Frequently Asked Questions
-            </h3>
-            <div className="space-y-4">
-              {faqs.map((faq, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg border-2 border-blue-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
-                >
-                  <button
-                    onClick={() => toggleFaq(index)}
-                    className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-blue-50 transition-colors duration-200"
-                  >
-                    <span className="text-lg font-bold text-black pr-4">
-                      {faq.question}
-                    </span>
-                    <ChevronDown
-                      className={`w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300 ${
-                        openFaq === index ? 'rotate-180' : ''
-                      }`}
-                    />
-                  </button>
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ${
-                      openFaq === index ? 'max-h-96' : 'max-h-0'
-                    }`}
-                  >
-                    <div className="px-6 py-5 bg-blue-50 border-t-2 border-blue-200">
-                      <p className="text-gray-700 leading-relaxed">
-                        {faq.answer}
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Guarantee Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
         <div className="container mx-auto px-6">
@@ -257,6 +195,73 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
                   </p>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
+        <div className="container mx-auto px-6">
+          <div className="text-center mb-16">
+            <h3 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
+              Grow Your Business Starting Today
+            </h3>
+            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
+              Every day you wait is another day your competitors are getting ahead. Our AI automation systems are ready to deploy immediately, giving you back hours of time while increasing revenue. Whether you're in roofing, recruiting, or any service business, we have proven solutions that start working from day one. Schedule your free strategy call today and discover how AI can transform your business operations.
+            </p>
+            <button
+              onClick={handleBookCall}
+              className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-lg transition-all duration-300 hover:scale-105 tracking-wide shadow-lg hover:shadow-blue-500/20"
+            >
+              <div className="flex items-center justify-center gap-3">
+                <ArrowUp className="w-5 h-5" />
+                <span>Book a Strategy Call</span>
+              </div>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-6">
+          <div className="max-w-6xl mx-auto">
+            <h3 className="text-3xl md:text-4xl font-bold text-black mb-12 text-center tracking-tight">
+              Frequently Asked Questions
+            </h3>
+            <div className="space-y-4">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-white rounded-lg border-2 border-blue-200 overflow-hidden shadow-md hover:shadow-lg transition-shadow duration-300"
+                >
+                  <button
+                    onClick={() => toggleFaq(index)}
+                    className="w-full px-6 py-5 text-left flex items-center justify-between hover:bg-blue-50 transition-colors duration-200"
+                  >
+                    <span className="text-lg font-bold text-black pr-4">
+                      {faq.question}
+                    </span>
+                    <ChevronDown
+                      className={`w-6 h-6 text-blue-600 flex-shrink-0 transition-transform duration-300 ${
+                        openFaq === index ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </button>
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ${
+                      openFaq === index ? 'max-h-96' : 'max-h-0'
+                    }`}
+                  >
+                    <div className="px-6 py-5 bg-blue-50 border-t-2 border-blue-200">
+                      <p className="text-gray-700 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
