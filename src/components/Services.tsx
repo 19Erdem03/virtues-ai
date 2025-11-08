@@ -1,6 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowUp, Calendar, ChevronLeft, ChevronRight, MessageCircle, Users, Share2, Phone, Globe, Target } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+
+// Mock hook for scroll animation
+const useScrollAnimation = () => {
+  const [isVisible, setIsVisible] = useState(true);
+  return { elementRef: null, isVisible };
+};
 
 interface ServicesProps {
   onBookCall: (service?: string) => void;
@@ -100,25 +105,53 @@ export const services = [
     ]
   },
   {
-    title: 'Hiring Systems',
-    subtitle: 'Automates recruitment. Screens. Interviews. Hires.',
+    title: 'Other',
+    subtitle: 'Custom solutions. Hiring. Ecommerce. And more.',
     icon: Users,
-    features: [
+    subServices: [
       {
-        title: 'Automated Screening',
-        description: 'AI screens resumes and applications automatically, filtering candidates based on your specific criteria and requirements.'
+        name: 'Hiring Systems',
+        description: 'Automates recruitment. Screens. Interviews. Hires.',
+        features: [
+          {
+            title: 'Automated Screening',
+            description: 'AI screens resumes and applications automatically, filtering candidates based on your specific criteria and requirements.'
+          },
+          {
+            title: 'Interview Scheduling',
+            description: 'Automatically schedules interviews with qualified candidates, managing calendars and sending confirmations.'
+          },
+          {
+            title: 'Candidate Assessment',
+            description: 'AI conducts initial interviews and assessments, evaluating candidates on technical skills and cultural fit.'
+          },
+          {
+            title: 'Hiring Pipeline',
+            description: 'Complete recruitment pipeline from job posting to offer letters, all automated and tracked in real-time.'
+          }
+        ]
       },
       {
-        title: 'Interview Scheduling',
-        description: 'Automatically schedules interviews with qualified candidates, managing calendars and sending confirmations.'
-      },
-      {
-        title: 'Candidate Assessment',
-        description: 'AI conducts initial interviews and assessments, evaluating candidates on technical skills and cultural fit.'
-      },
-      {
-        title: 'Hiring Pipeline',
-        description: 'Complete recruitment pipeline from job posting to offer letters, all automated and tracked in real-time.'
+        name: 'Ecommerce Automation',
+        description: 'Amazon FBA that runs itself. Optimizes. Scales.',
+        features: [
+          {
+            title: 'Product Listing Creation',
+            description: 'AI-generated product listings with compelling titles, bullet points, and descriptions optimized for Amazon\'s algorithm and customer conversion.'
+          },
+          {
+            title: 'Listing Optimization',
+            description: 'Continuous optimization of existing listings using performance data, keyword analysis, and competitor research to maximize visibility and sales.'
+          },
+          {
+            title: 'Auto Amazon FBA PPC Campaigns',
+            description: 'AI-powered PPC campaign management that automatically adjusts bids, targets profitable keywords, and optimizes ad spend for maximum ROI.'
+          },
+          {
+            title: 'Performance Analytics',
+            description: 'Real-time tracking of sales, rankings, and campaign performance with automated reporting and actionable insights.'
+          }
+        ]
       }
     ]
   },
@@ -302,38 +335,84 @@ export default function Services({ onBookCall }: ServicesProps) {
           {expandedService !== null && (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-8">
               <div className="max-w-5xl mx-auto">
-                <h3 className="text-3xl font-bold text-black mb-8 text-center tracking-wide font-mono">
-                  {services[expandedService].title} Features
-                </h3>
-                
-                <div className="grid md:grid-cols-2 gap-6">
-                  {services[expandedService].features.map((feature, featureIndex) => (
-                    <div
-                      key={featureIndex}
-                      className="p-6 bg-white border border-blue-200 hover:border-blue-300 transition-colors duration-200 rounded-lg shadow-sm"
-                    >
-                      <h4 className="text-xl font-semibold text-black mb-3 tracking-wide font-mono">
-                        {feature.title}
-                      </h4>
-                      <p className="text-gray-600 leading-relaxed tracking-wide">
-                        {feature.description}
-                      </p>
+                {services[expandedService].subServices ? (
+                  // Handle "Other" section with sub-services
+                  <div className="space-y-12">
+                    {services[expandedService].subServices.map((subService, subIndex) => (
+                      <div key={subIndex} className="bg-white border border-blue-200 rounded-lg p-8">
+                        <h3 className="text-3xl font-bold text-black mb-3 text-center tracking-wide font-mono">
+                          {subService.name}
+                        </h3>
+                        <p className="text-center text-gray-600 mb-8 tracking-wide">
+                          {subService.description}
+                        </p>
+                        
+                        <div className="grid md:grid-cols-2 gap-6 mb-8">
+                          {subService.features.map((feature, featureIndex) => (
+                            <div
+                              key={featureIndex}
+                              className="p-6 bg-blue-50 border border-blue-200 hover:border-blue-300 transition-colors duration-200 rounded-lg shadow-sm"
+                            >
+                              <h4 className="text-xl font-semibold text-black mb-3 tracking-wide font-mono">
+                                {feature.title}
+                              </h4>
+                              <p className="text-gray-600 leading-relaxed tracking-wide">
+                                {feature.description}
+                              </p>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        <div className="text-center">
+                          <button
+                            onClick={() => onBookCall(subService.name)}
+                            className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all duration-300 hover:scale-105 inline-flex items-center justify-center gap-3 tracking-wide rounded-lg shadow-lg hover:shadow-blue-500/20"
+                          >
+                            <ArrowUp className="w-5 h-5" />
+                            <span>Get Started with {subService.name}</span>
+                            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                          </button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  // Handle regular services
+                  <>
+                    <h3 className="text-3xl font-bold text-black mb-8 text-center tracking-wide font-mono">
+                      {services[expandedService].title} Features
+                    </h3>
+                    
+                    <div className="grid md:grid-cols-2 gap-6">
+                      {services[expandedService].features.map((feature, featureIndex) => (
+                        <div
+                          key={featureIndex}
+                          className="p-6 bg-white border border-blue-200 hover:border-blue-300 transition-colors duration-200 rounded-lg shadow-sm"
+                        >
+                          <h4 className="text-xl font-semibold text-black mb-3 tracking-wide font-mono">
+                            {feature.title}
+                          </h4>
+                          <p className="text-gray-600 leading-relaxed tracking-wide">
+                            {feature.description}
+                          </p>
+                        </div>
+                      ))}
                     </div>
-                  ))}
-                </div>
-                
-                <div className="mt-8 text-center">
-                  <button
-                    onClick={() => onBookCall(services[expandedService].title)}
-                    className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 mx-auto tracking-wide rounded-lg shadow-lg hover:shadow-blue-500/20"
-                  >
-                    <div className="flex items-center gap-3">
-                      <ArrowUp className="w-5 h-5" />
-                      <span>Get Started with {services[expandedService].title}</span>
-                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                    
+                    <div className="mt-8 text-center">
+                      <button
+                        onClick={() => onBookCall(services[expandedService].title)}
+                        className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-3 mx-auto tracking-wide rounded-lg shadow-lg hover:shadow-blue-500/20"
+                      >
+                        <div className="flex items-center gap-3">
+                          <ArrowUp className="w-5 h-5" />
+                          <span>Get Started with {services[expandedService].title}</span>
+                          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+                        </div>
+                      </button>
                     </div>
-                  </button>
-                </div>
+                  </>
+                )}
               </div>
             </div>
           )}
@@ -342,3 +421,18 @@ export default function Services({ onBookCall }: ServicesProps) {
     </section>
   );
 }
+
+// Demo wrapper
+function Demo() {
+  const handleBookCall = (service) => {
+    alert(`Booking call for: ${service || 'General consultation'}`);
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-50">
+      <Services onBookCall={handleBookCall} />
+    </div>
+  );
+}
+
+export default Demo;
