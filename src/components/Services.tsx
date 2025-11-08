@@ -1,15 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowRight, ArrowUp, Calendar, ChevronLeft, ChevronRight, MessageCircle, Users, Share2, Phone, Globe, Target } from 'lucide-react';
-
-// Mock hook for scroll animation
-const useScrollAnimation = () => {
-  const [isVisible, setIsVisible] = useState(true);
-  return { elementRef: null, isVisible };
-};
-
-interface ServicesProps {
-  onBookCall: (service?: string) => void;
-}
+import { ArrowRight, ArrowUp, ChevronLeft, ChevronRight, MessageCircle, Users, Share2, Phone, Globe, Target } from 'lucide-react';
 
 export const services = [
   {
@@ -157,12 +147,12 @@ export const services = [
   },
 ];
 
-export default function Services({ onBookCall }: ServicesProps) {
-  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation();
-  const { elementRef: servicesRef, isVisible: servicesVisible } = useScrollAnimation();
+export default function Services({ onBookCall }) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [expandedService, setExpandedService] = useState<number | null>(null);
+  const [expandedService, setExpandedService] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [servicesVisible, setServicesVisible] = useState(false);
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -175,6 +165,12 @@ export default function Services({ onBookCall }: ServicesProps) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Trigger animations on mount
+  useEffect(() => {
+    setTimeout(() => setHeaderVisible(true), 100);
+    setTimeout(() => setServicesVisible(true), 300);
+  }, []);
+
   const nextService = () => {
     setCurrentIndex((prev) => (prev + 1) % services.length);
     setExpandedService(null);
@@ -185,42 +181,24 @@ export default function Services({ onBookCall }: ServicesProps) {
     setExpandedService(null);
   };
 
-  // Calculate if we're at the beginning or end (showing last possible set of 3)
   const isAtStart = currentIndex === 0;
   const isAtEnd = isMobile ? currentIndex >= services.length - 1 : currentIndex >= services.length - 3;
 
-  const goToService = (index: number) => {
+  const goToService = (index) => {
     setCurrentIndex(index);
     setExpandedService(null);
   };
 
-  const toggleExpanded = (index: number) => {
+  const toggleExpanded = (index) => {
     setExpandedService(expandedService === index ? null : index);
   };
-
-  // Calculate visible services based on screen size
-  const getVisibleServices = () => {
-    const startIndex = currentIndex;
-    const visibleCount = 3; // Show 3 services at a time
-    const result = [];
-    
-    for (let i = 0; i < visibleCount; i++) {
-      const index = (startIndex + i) % services.length;
-      result.push({ ...services[index], originalIndex: index });
-    }
-    
-    return result;
-  };
-
-  const visibleServices = getVisibleServices();
 
   return (
     <section id="services" className="py-20 px-6 relative overflow-hidden bg-white">
       <div className="relative z-10 max-w-7xl mx-auto">
         <div 
-          ref={headerRef}
           className={`text-center mb-16 transition-all duration-800 ${
-            headerVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <h2 className="text-4xl md:text-6xl font-bold mb-6 text-black tracking-tight">
@@ -232,9 +210,8 @@ export default function Services({ onBookCall }: ServicesProps) {
         </div>
 
         <div 
-          ref={servicesRef}
-          className={`transition-all duration-800 animation-delay-200 ${
-            servicesVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+          className={`transition-all duration-800 ${
+            servicesVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           {/* Services Container with Navigation */}
@@ -252,7 +229,7 @@ export default function Services({ onBookCall }: ServicesProps) {
             {/* Services Display */}
             <div className="flex-1 max-w-6xl mx-8 md:mx-16 overflow-hidden">
               <div 
-                className={`flex transition-transform duration-500 ease-in-out`}
+                className="flex transition-transform duration-500 ease-in-out"
                 style={{ 
                   transform: isMobile 
                     ? `translateX(-${currentIndex * 100}%)` 
@@ -422,7 +399,7 @@ export default function Services({ onBookCall }: ServicesProps) {
   );
 }
 
-// Demo wrapper
+// Demo wrapper for testing
 function Demo() {
   const handleBookCall = (service) => {
     alert(`Booking call for: ${service || 'General consultation'}`);
@@ -435,4 +412,4 @@ function Demo() {
   );
 }
 
-export default Demo;
+export { Demo };
