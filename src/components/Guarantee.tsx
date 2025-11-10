@@ -1,43 +1,43 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Shield, TrendingUp, Clock, CheckCircle, ArrowUp, Zap, Rocket, Crown, ChevronDown } from 'lucide-react';
+import { Shield, TrendingUp, Phone, CheckCircle, ArrowUp, ChevronDown } from 'lucide-react';
 
 // FAQ Data
 const faqData = [
   {
-    question: "How quickly can we get started?",
-    answer: "We can have your AI solution deployed within 7 days of our initial consultation. Our team works efficiently to understand your needs and implement the right automation systems for your business."
+    question: "How quickly can I get my AI voice agent up and running?",
+    answer: "We can have your AI inbound voice agent answering calls within 48-72 hours of our initial consultation. We handle all the technical setup, train the AI on your roofing business, and integrate it with your phone system."
   },
   {
-    question: "What if I'm not satisfied with the results?",
-    answer: "We offer a 30-day money-back guarantee. If you don't see measurable results within the first month, we'll refund 100% of your investment. No questions asked."
+    question: "What if the AI voice agent doesn't work for my roofing business?",
+    answer: "We offer a 30 day money back guarantee. If you are not satisfied with how the AI handles your calls within the first month, we will refund 100% of your investment. No questions asked."
   },
   {
-    question: "Do I need technical knowledge to use your AI solutions?",
-    answer: "Not at all! Our AI systems are designed to be user-friendly and intuitive. We handle all the technical setup and provide training to ensure your team can use the tools effectively."
+    question: "Do I need technical knowledge to use the AI voice agent?",
+    answer: "Not at all! The AI voice agent works completely automatically. It answers calls, qualifies leads, and books appointments without any action needed from you. We provide a simple dashboard to review calls and appointments."
   },
   {
-    question: "Which industries do you work with?",
-    answer: "We specialize in service-based businesses including roofing, recruiting, legal services, healthcare, real estate, and more. Our AI solutions are customizable to fit any industry that deals with leads and customer communication."
+    question: "What happens if the AI can't answer a caller's question?",
+    answer: "The AI is trained specifically on roofing services and can handle 95% of common questions. For complex situations, it smoothly transfers the call to you with full context of the conversation, so you never lose a lead."
   },
   {
     question: "What's included in the monthly pricing?",
-    answer: "All packages include the AI system setup, ongoing support, performance monitoring, weekly optimizations, and direct access to our team. You also own all the data and leads generated through our systems."
+    answer: "Everything! AI voice agent setup, unlimited call handling, lead qualification, appointment booking, CRM integration, ongoing optimization, and direct support from our team. No hidden fees or surprise charges."
   },
   {
     question: "Can I cancel at any time?",
-    answer: "Yes, there are no long-term contracts. You can cancel your subscription at any time. However, we're confident you'll see such great results that you'll want to continue growing with us."
+    answer: "Yes, there are no long term contracts. You can cancel your subscription at any time. However, most roofers see such great results capturing leads 24/7 that they stay with us for years."
   },
   {
     question: "How do you measure success?",
-    answer: "We track key metrics including lead response time, conversion rates, time saved through automation, and overall ROI. You'll have access to a real-time dashboard showing all these metrics and more."
+    answer: "We track every call answered, leads qualified, appointments booked, and response times. You get a real time dashboard showing exactly how many jobs you would have missed without the AI voice agent."
   },
   {
-    question: "Do you offer custom solutions?",
-    answer: "Absolutely! While we have standard packages, we can customize any solution to fit your specific business needs. Our Scale package is particularly flexible for businesses with unique requirements."
+    question: "Does this work for small roofing companies?",
+    answer: "Absolutely! In fact, small roofing companies benefit the most because you are often on roofs or meeting customers when calls come in. The AI ensures you never miss a lead, no matter how busy you are."
   }
 ];
 
-export default function CombinedSection({ onBookCall = () => {}, faqs = faqData }) {
+export default function CombinedSection({ onBookCall, faqs = faqData }) {
   const [openFaq, setOpenFaq] = useState(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
@@ -69,9 +69,10 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const handleBookCall = (event, services) => {
-    console.log('Booking call with services:', services);
-    onBookCall(event, services);
+  const handleBookCall = () => {
+    if (onBookCall) {
+      onBookCall();
+    }
   };
 
   return (
@@ -82,7 +83,7 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
           <div
             ref={headerRef}
             className={`text-center mb-16 transition-all duration-800 ${
-              headerVisible ? 'animate-fade-in' : 'opacity-0 translate-y-8'
+              headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
           >
             <div className="flex items-center justify-center mb-6">
@@ -92,23 +93,24 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
               Our Guarantee
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-              We stand behind our AI solutions with a promise of real, measurable results
+              We stand behind our AI voice agents with a promise of real, measurable results for your roofing business
             </p>
           </div>
 
           <div
             ref={contentRef}
-            className={`max-w-5xl mx-auto transition-all duration-800 animation-delay-200 ${
-              contentVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+            className={`max-w-5xl mx-auto transition-all duration-800 ${
+              contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
+            style={{ transitionDelay: '200ms' }}
           >
             <div className="bg-white rounded-2xl border-2 border-blue-200 shadow-2xl overflow-hidden">
               <div className="bg-gradient-to-r from-blue-600 to-blue-700 p-8 md:p-12 text-center">
                 <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
-                  Results Within 30 Days or Your Money Back
+                  Capture More Leads Within 30 Days or Your Money Back
                 </h3>
                 <p className="text-xl text-blue-100">
-                  We're so confident in our AI solutions that we guarantee measurable improvements to your business within the first month.
+                  We are so confident our AI voice agent will capture leads you are currently missing that we guarantee results within the first month.
                 </p>
               </div>
 
@@ -116,25 +118,25 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
                 <div className="grid md:grid-cols-3 gap-8 mb-12">
                   <div className="text-center">
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <TrendingUp className="w-8 h-8 text-blue-600" />
+                      <Phone className="w-8 h-8 text-blue-600" />
                     </div>
                     <h4 className="text-xl font-bold text-black mb-3">
-                      Increased Revenue
+                      Never Miss A Call
                     </h4>
                     <p className="text-gray-600">
-                      See measurable growth in lead conversion and sales within 30 days
+                      Every single call answered in 2 rings, 24/7, even when you are on the roof
                     </p>
                   </div>
 
                   <div className="text-center">
                     <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <Clock className="w-8 h-8 text-blue-600" />
+                      <TrendingUp className="w-8 h-8 text-blue-600" />
                     </div>
                     <h4 className="text-xl font-bold text-black mb-3">
-                      Time Saved
+                      More Jobs Booked
                     </h4>
                     <p className="text-gray-600">
-                      Reduce manual work by at least 20 hours per week through automation
+                      Instant lead qualification and appointment booking means more estimates and closed deals
                     </p>
                   </div>
 
@@ -146,44 +148,44 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
                       Zero Risk
                     </h4>
                     <p className="text-gray-600">
-                      If you don't see results, we'll refund 100% of your investment
+                      If you do not see more leads captured, we will refund 100% of your investment
                     </p>
                   </div>
                 </div>
 
                 <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 md:p-8">
                   <h4 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
-                    What You Get With Every Solution:
+                    What You Get With Your AI Voice Agent:
                   </h4>
                   <div className="space-y-6">
                     <div className="flex items-start gap-3 md:gap-4">
                       <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
                       <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Rapid Deployment:</strong> Your AI solution will be live and operational within 7 days
+                        <strong className="text-lg md:text-lg">48 Hour Setup:</strong> Your AI voice agent will be answering calls within 2 business days
                       </p>
                     </div>
                     <div className="flex items-start gap-3 md:gap-4">
                       <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
                       <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Dedicated Support:</strong> Direct access to our team for troubleshooting and optimization
+                        <strong className="text-lg md:text-lg">24/7 Call Handling:</strong> Never miss another roofing lead, even at 2 AM when storms hit
                       </p>
                     </div>
                     <div className="flex items-start gap-3 md:gap-4">
                       <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
                       <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Performance Tracking:</strong> Real-time analytics dashboard showing your ROI and key metrics
+                        <strong className="text-lg md:text-lg">Instant Lead Qualification:</strong> AI filters out tire kickers so you only talk to serious customers
                       </p>
                     </div>
                     <div className="flex items-start gap-3 md:gap-4">
                       <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
                       <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Continuous Optimization:</strong> Weekly refinements to improve performance and results
+                        <strong className="text-lg md:text-lg">Automatic Appointment Booking:</strong> AI schedules inspections directly into your calendar
                       </p>
                     </div>
                     <div className="flex items-start gap-3 md:gap-4">
                       <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
                       <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Full Ownership:</strong> You own all data, leads, and systems we build for you
+                        <strong className="text-lg md:text-lg">Real Time Dashboard:</strong> See every call, every lead, and every appointment as they happen
                       </p>
                     </div>
                   </div>
@@ -191,7 +193,7 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
 
                 <div className="mt-8 text-center">
                   <p className="text-gray-600 text-lg italic">
-                    "We don't get paid unless you get results. That's how confident we are in our solutions."
+                    "We do not get paid unless you capture more leads. That is how confident we are in our AI voice agents."
                   </p>
                 </div>
               </div>
@@ -205,10 +207,10 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h3 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-              Grow Your Business Starting Today
+              Stop Losing Roofing Jobs Today
             </h3>
             <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
-              Every day you wait is another day your competitors are getting ahead. Our AI automation systems are ready to deploy immediately, giving you back hours of time while increasing revenue. Whether you're in roofing, recruiting, or any service business, we have proven solutions that start working from day one. Schedule your free strategy call today and discover how AI can transform your business operations.
+              Every missed call is a lost roofing job going to your competitor. Our AI voice agent answers every call in 2 rings, qualifies every lead, and books appointments automatically. While other roofers are losing leads, you will be capturing every single one. Schedule your free demo call today and see exactly how the AI handles roofing calls. No credit card required, no pressure, just a real demonstration of how you will never miss another lead.
             </p>
             <button
               onClick={handleBookCall}
@@ -216,7 +218,7 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
             >
               <div className="flex items-center justify-center gap-3">
                 <ArrowUp className="w-5 h-5" />
-                <span>Book a Strategy Call</span>
+                <span>Book Call</span>
               </div>
             </button>
           </div>
@@ -269,3 +271,5 @@ export default function CombinedSection({ onBookCall = () => {}, faqs = faqData 
     </>
   );
 }
+
+export default CombinedSection;
