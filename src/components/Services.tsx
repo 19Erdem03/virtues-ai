@@ -261,15 +261,26 @@ function Services({ onBookCall }) {
               </div>
 
               <div className="flex justify-center gap-2 mb-8">
-                {services.map((_, displayIndex) => (
-                  <button
-                    key={displayIndex}
-                    onClick={() => goToService(displayIndex)}
-                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                      displayIndex === currentIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
-                    }`}
-                  />
-                ))}
+                {isMobile 
+                  ? services.map((_, displayIndex) => (
+                      <button
+                        key={displayIndex}
+                        onClick={() => goToService(displayIndex)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          displayIndex === currentIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                      />
+                    ))
+                  : [...Array(services.length - 2)].map((_, displayIndex) => (
+                      <button
+                        key={displayIndex}
+                        onClick={() => goToService(displayIndex)}
+                        className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                          displayIndex === currentIndex ? 'bg-blue-600 scale-125' : 'bg-gray-300 hover:bg-gray-400'
+                        }`}
+                      />
+                    ))
+                }
               </div>
             </>
           ) : (
