@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Shield, TrendingUp, Phone, CheckCircle, ArrowUp, ChevronDown } from 'lucide-react';
 
-// FAQ Data
 const faqData = [
   {
     question: "How quickly can I get my AI voice agent up and running?",
@@ -37,7 +36,7 @@ const faqData = [
   }
 ];
 
-export default function CombinedSection({ onBookCall, faqs = faqData }) {
+function CombinedSection({ onBookCall, faqs = faqData }) {
   const [openFaq, setOpenFaq] = useState(null);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [contentVisible, setContentVisible] = useState(false);
@@ -77,7 +76,6 @@ export default function CombinedSection({ onBookCall, faqs = faqData }) {
 
   return (
     <>
-      {/* Guarantee Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
         <div className="container mx-auto px-6">
           <div
@@ -202,7 +200,6 @@ export default function CombinedSection({ onBookCall, faqs = faqData }) {
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
@@ -225,7 +222,6 @@ export default function CombinedSection({ onBookCall, faqs = faqData }) {
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-20 bg-white">
         <div className="container mx-auto px-6">
           <div className="max-w-6xl mx-auto">
