@@ -93,7 +93,7 @@ function ProblemSection({ onBookCall }) {
             return (
               <div
                 key={index}
-                className={`bg-white rounded-xl border-2 border-blue-200 p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
+                className={`bg-red-50 rounded-xl border-2 border-red-300 p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 ${
                   isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                 }`}
                 style={{ 
@@ -102,22 +102,22 @@ function ProblemSection({ onBookCall }) {
                 }}
               >
                 <div className="flex items-start gap-4 mb-4">
-                  <div className="w-14 h-14 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                    <Icon className="w-7 h-7 text-blue-600" />
+                  <div className="w-14 h-14 bg-red-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                    <Icon className="w-7 h-7 text-red-700" />
                   </div>
                   <div>
-                    <h3 className="text-2xl font-bold text-black mb-2 tracking-tight">
+                    <h3 className="text-2xl font-bold text-red-900 mb-2 tracking-tight">
                       {problem.title}
                     </h3>
                   </div>
                 </div>
                 
-                <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                <p className="text-gray-800 text-lg leading-relaxed mb-4">
                   {problem.description}
                 </p>
                 
-                <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                  <p className="text-blue-700 font-bold text-center">
+                <div className="bg-red-100 border border-red-300 rounded-lg p-4">
+                  <p className="text-red-800 font-bold text-center">
                     {problem.stat}
                   </p>
                 </div>
@@ -236,7 +236,7 @@ function ProblemSection({ onBookCall }) {
             What If You Never Missed Another Call?
           </h3>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Our tool answers every call in 2 rings, qualifies leads instantly, and books appointments 24/7 - even while you're on the roof.
+            Our AI voice agent answers every call in 2 rings, qualifies leads instantly, and books appointments 24/7—even while you're on the roof.
           </p>
 
           {onBookCall && (
@@ -244,7 +244,7 @@ function ProblemSection({ onBookCall }) {
               onClick={onBookCall}
               className="px-10 py-5 bg-white text-blue-600 font-bold rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
             >
-              Book Call
+              Get Your Free Demo Call
             </button>
           )}
           
@@ -258,7 +258,7 @@ function ProblemSection({ onBookCall }) {
             "Every missed call is a job for your competitor."
           </p>
           <p className="text-lg text-gray-600">
-            Stop losing money. Start answering every call - automatically.
+            Stop losing money. Start answering every call—automatically.
           </p>
         </div>
       </div>
