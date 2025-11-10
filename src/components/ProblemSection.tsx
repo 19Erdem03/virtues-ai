@@ -244,7 +244,7 @@ function ProblemSection({ onBookCall }) {
               onClick={onBookCall}
               className="px-10 py-5 bg-white text-blue-600 font-bold rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
             >
-              Get Your Free Demo Call
+              Book Call
             </button>
           )}
           
