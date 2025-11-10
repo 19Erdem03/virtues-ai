@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, ArrowUp, ChevronLeft, ChevronRight, MessageCircle, Users, ShoppingCart, Target, Globe } from 'lucide-react';
 
-export const services = [
+const services = [
   {
     title: 'Ecommerce Automation',
     subtitle: 'Amazon FBA that runs itself. Optimizes. Scales.',
@@ -119,14 +119,13 @@ export const services = [
   }
 ];
 
-export default function Services({ onBookCall }) {
+function Services({ onBookCall }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [expandedService, setExpandedService] = useState(null);
   const [isMobile, setIsMobile] = useState(false);
   const [headerVisible, setHeaderVisible] = useState(false);
   const [servicesVisible, setServicesVisible] = useState(false);
 
-  // Check if mobile on mount and resize
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 1024);
@@ -137,7 +136,6 @@ export default function Services({ onBookCall }) {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Trigger animations on mount
   useEffect(() => {
     setTimeout(() => setHeaderVisible(true), 100);
     setTimeout(() => setServicesVisible(true), 300);
@@ -187,7 +185,6 @@ export default function Services({ onBookCall }) {
           }`}
         >
           {isMobile ? (
-            // Mobile: Carousel View
             <>
               <div className="relative flex items-center justify-center mb-8">
                 {!isAtStart && (
@@ -276,7 +273,6 @@ export default function Services({ onBookCall }) {
               </div>
             </>
           ) : (
-            // Desktop: Carousel View with 3 cards visible
             <>
               <div className="relative flex items-center justify-center mb-8">
                 {!isAtStart && (
@@ -366,7 +362,6 @@ export default function Services({ onBookCall }) {
             </>
           )}
 
-          {/* Expanded Service Details */}
           {expandedService !== null && (
             <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 mb-8">
               <div className="max-w-5xl mx-auto">
