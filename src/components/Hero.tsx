@@ -17,13 +17,13 @@ function Hero({ onBookCall }) {
           }`}
         >
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 tracking-tight leading-tight">
-            Never Miss A Lead
+            Never Miss A Job
             <br />
-            <span className="text-blue-600">Ever Again</span>
+            <span className="text-blue-600">Ever Again.</span>
           </h1>
           
           <p className="text-xl md:text-2xl text-gray-600 mb-12 max-w-4xl mx-auto leading-relaxed tracking-wide">
-            AI inbound voice agents that answer every call, qualify leads, and book appointments 24/7—so you can focus on roofing, not your phone.
+            Missing calls on the roof? Every call answered in 2 rings. Every lead qualified. Every appointment booked. 24/7, while you stay on the roof.
           </p>
 
           {/* Service Highlight */}
