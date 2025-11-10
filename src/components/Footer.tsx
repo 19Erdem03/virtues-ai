@@ -1,18 +1,30 @@
-import React from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Mail, Phone, MapPin, Linkedin } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
 
-interface FooterProps {
-  onCookiePolicy: () => void;
-  onPrivacyPolicy: () => void;
-  onTermsOfService: () => void;
-  onBookCall: (service?: string) => void;
-}
+function Footer({ onCookiePolicy, onPrivacyPolicy, onTermsOfService, onBookCall }) {
+  const [footerVisible, setFooterVisible] = useState(false);
+  const footerRef = useRef(null);
 
-export default function Footer({ onCookiePolicy, onPrivacyPolicy, onTermsOfService, onBookCall }: FooterProps) {
-  const { elementRef: footerRef, isVisible: footerVisible } = useScrollAnimation();
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setFooterVisible(true);
+          }
+        });
+      },
+      { threshold: 0.1 }
+    );
 
-  const scrollToSection = (sectionId: string) => {
+    if (footerRef.current) {
+      observer.observe(footerRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -49,14 +61,6 @@ export default function Footer({ onCookiePolicy, onPrivacyPolicy, onTermsOfServi
                   className="text-gray-600 hover:text-black transition-colors duration-200 tracking-wide text-left"
                 >
                   Why Choose Us
-                </button>
-              </li>
-              <li>
-                <button
-                  onClick={() => scrollToSection('services')}
-                  className="text-gray-600 hover:text-black transition-colors duration-200 tracking-wide text-left"
-                >
-                  Services
                 </button>
               </li>
               <li>
@@ -118,3 +122,5 @@ export default function Footer({ onCookiePolicy, onPrivacyPolicy, onTermsOfServi
     </footer>
   );
 }
+
+export default Footer;
