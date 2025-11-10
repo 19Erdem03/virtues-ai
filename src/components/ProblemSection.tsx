@@ -236,7 +236,7 @@ function ProblemSection({ onBookCall }) {
             What If You Never Missed Another Call?
           </h3>
           <p className="text-xl text-white/90 mb-8 max-w-3xl mx-auto">
-            Our AI voice agent answers every call in 2 rings, qualifies leads instantly, and books appointments 24/7—even while you're on the roof.
+            Our tool answers every call in 2 rings, qualifies leads instantly, and books appointments 24/7—even while you're on the roof.
           </p>
 
           {onBookCall && (
@@ -244,7 +244,7 @@ function ProblemSection({ onBookCall }) {
               onClick={onBookCall}
               className="px-10 py-5 bg-white text-blue-600 font-bold rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-xl hover:shadow-2xl"
             >
-              Get Your Free Demo Call
+              Get Your Free Demo
             </button>
           )}
           
@@ -258,7 +258,7 @@ function ProblemSection({ onBookCall }) {
             "Every missed call is a job for your competitor."
           </p>
           <p className="text-lg text-gray-600">
-            Stop losing money. Start answering every call—automatically.
+            Stop losing money. Start answering every call. Automatically.
           </p>
         </div>
       </div>
