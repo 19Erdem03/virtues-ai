@@ -4,7 +4,7 @@ import Hero from './components/Hero';
 import ProblemSection from './components/ProblemSection';
 import AboutUs from './components/AboutUs';
 import Features from './components/Features';
-import Services from './components/Services';
+// REMOVED: import Services from './components/Services';
 import Guarantee from './components/Guarantee';
 import BookConsultation from './components/BookConsultation';
 import ConsultationForm from './components/ConsultationForm';
@@ -69,7 +69,7 @@ function App() {
       <ProblemSection onBookCall={handleBookCall} />
       <AboutUs />
       <Features />
-      <Services onBookCall={handleBookCall} />
+      {/* REMOVED: <Services onBookCall={handleBookCall} /> */}
       <Guarantee />
       <Footer onCookiePolicy={handleCookiePolicy} onPrivacyPolicy={handlePrivacyPolicy} onTermsOfService={handleTermsOfService} onBookCall={handleBookCall} />
     </div>
