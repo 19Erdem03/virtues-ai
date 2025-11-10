@@ -1,39 +1,64 @@
-import React, { useState, useEffect } from 'react';
-import { Bot, Globe, Zap, TrendingUp, Clock, ChevronLeft, ChevronRight } from 'lucide-react';
-import { useScrollAnimation } from '../hooks/useScrollAnimation';
+import React, { useState, useEffect, useRef } from 'react';
+import { Phone, Clock, Zap, TrendingUp, ChevronLeft, ChevronRight } from 'lucide-react';
 
 const features = [
   {
+    icon: Phone,
+    title: 'Answers Every Call',
+    description: 'Never miss another lead. AI picks up in 2 rings, 24/7/365, even when you are on a roof.',
+    color: 'blue'
+  },
+  {
     icon: Zap,
-    title: 'Instant Deployment',
-    description: 'AI solutions live in days, not months. Rapid implementation with immediate results.',
-    color: 'blue'
-  },
-  {
-    icon: Globe,
-    title: 'Worldwide',
-    description: 'Global AI solutions serving customers across all time zones and languages.',
-    color: 'blue'
-  },
-  {
-    icon: TrendingUp,
-    title: 'Revenue Growth',
-    description: 'Increase revenue by automating sales processes and improving customer engagement.',
+    title: 'Instant Lead Qualification',
+    description: 'Automatically qualifies callers and filters out time wasters so you only get serious roofing jobs.',
     color: 'blue'
   },
   {
     icon: Clock,
-    title: '24/7 Automation',
-    description: 'AI agents work around the clock, capturing leads and serving customers while you sleep.',
+    title: 'Books Appointments',
+    description: 'AI schedules inspections and quotes directly into your calendar while handling all customer questions.',
+    color: 'blue'
+  },
+  {
+    icon: TrendingUp,
+    title: 'More Jobs Closed',
+    description: 'Respond faster than competitors, qualify better leads, and book more roofing jobs every single day.',
     color: 'blue'
   }
 ];
 
-export default function Features() {
-  const { elementRef: headerRef, isVisible: headerVisible } = useScrollAnimation();
-  const { elementRef: gridRef, isVisible: gridVisible } = useScrollAnimation();
+function Features() {
+  const [headerVisible, setHeaderVisible] = useState(false);
+  const [gridVisible, setGridVisible] = useState(false);
+  const headerRef = useRef(null);
+  const gridRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const observerOptions = { threshold: 0.1 };
+    
+    const headerObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setHeaderVisible(true);
+      });
+    }, observerOptions);
+
+    const gridObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) setGridVisible(true);
+      });
+    }, observerOptions);
+
+    if (headerRef.current) headerObserver.observe(headerRef.current);
+    if (gridRef.current) gridObserver.observe(gridRef.current);
+
+    return () => {
+      headerObserver.disconnect();
+      gridObserver.disconnect();
+    };
+  }, []);
 
   // Check if mobile on mount and resize
   useEffect(() => {
@@ -63,14 +88,14 @@ export default function Features() {
         <div 
           ref={headerRef}
           className={`text-center mb-16 transition-all duration-800 ${
-            headerVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+            headerVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight font-mono">
-            Why Choose Our AI Solutions
+            How It Works For Roofers
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
-            Transform your business with cutting-edge AI technology that delivers real results
+            AI voice agents built specifically to capture more roofing leads and book more jobs
           </p>
         </div>
 
@@ -78,9 +103,10 @@ export default function Features() {
         {isMobile ? (
           <div 
             ref={gridRef}
-            className={`transition-all duration-800 animation-delay-200 ${
-              gridVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+            className={`transition-all duration-800 ${
+              gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
+            style={{ transitionDelay: '200ms' }}
           >
             {/* Features Container with Navigation */}
             <div className="relative flex items-center justify-center mb-8">
@@ -157,9 +183,10 @@ export default function Features() {
           /* Desktop Grid */
           <div 
             ref={gridRef}
-            className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto transition-all duration-800 animation-delay-200 ${
-              gridVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+            className={`grid md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-7xl mx-auto transition-all duration-800 ${
+              gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
             }`}
+            style={{ transitionDelay: '200ms' }}
           >
             {features.map((feature, index) => {
               const Icon = feature.icon;
@@ -168,9 +195,12 @@ export default function Features() {
                 <div
                   key={index}
                   className={`group relative p-4 md:p-8 rounded-lg border border-blue-200 bg-white hover:border-blue-400 hover:shadow-lg transition-all duration-500 hover:scale-105 min-h-[200px] md:min-h-[280px] flex flex-col shadow-sm ${
-                    gridVisible ? 'animate-slide-up' : 'opacity-0 translate-y-8'
+                    gridVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
                   }`}
-                  style={{ animationDelay: `${(index + 2) * 100}ms` }}
+                  style={{ 
+                    transitionDelay: `${(index + 2) * 100}ms`,
+                    transition: 'all 0.8s ease-out'
+                  }}
                 >
                   <div className="mb-4 md:mb-6">
                     <div className="w-10 h-10 md:w-12 md:h-12 rounded-lg bg-blue-100 border border-blue-200 flex items-center justify-center shadow-sm">
@@ -194,3 +224,5 @@ export default function Features() {
     </section>
   );
 }
+
+export default Features;
