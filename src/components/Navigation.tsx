@@ -65,12 +65,6 @@ function Navigation({ onBookCall, onCookiePolicy, onPrivacyPolicy, onTermsOfServ
             >
               Why Choose Us
             </button>
-            <button
-              onClick={() => scrollToSection('services')}
-              className="text-gray-600 hover:text-black transition-colors duration-200 tracking-wide"
-            >
-              Services
-            </button>
             <a
               href="https://www.linkedin.com/company/virtues-ai/"
               target="_blank"
@@ -134,12 +128,6 @@ function Navigation({ onBookCall, onCookiePolicy, onPrivacyPolicy, onTermsOfServ
                 className="text-left text-gray-600 hover:text-black transition-colors duration-200 tracking-wide"
               >
                 Why Choose Us
-              </button>
-              <button
-                onClick={() => scrollToSection('services')}
-                className="text-left text-gray-600 hover:text-black transition-colors duration-200 tracking-wide"
-              >
-                Services
               </button>
               <a
                 href="https://www.linkedin.com/company/virtues-ai/"
