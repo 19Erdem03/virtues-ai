@@ -404,4 +404,5 @@ function Services({ onBookCall }) {
   );
 }
 
+export { services };
 export default Services;
