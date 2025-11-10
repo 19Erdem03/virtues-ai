@@ -130,23 +130,6 @@ function AboutUs() {
               );
             })}
           </div>
-
-          <div className="mt-16 text-center">
-            <div className="bg-blue-600 text-white rounded-lg p-8 md:p-12">
-              <h3 className="text-2xl md:text-3xl font-bold mb-4 tracking-wide">
-                Ready to Answer Every Call?
-              </h3>
-              <p className="text-lg mb-8 max-w-2xl mx-auto opacity-90 tracking-wide">
-                See how our technology can capture every lead and book more roofing jobs starting today.
-              </p>
-              <a
-                href="#book-call"
-                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg font-bold text-lg hover:bg-blue-50 transition-all duration-300 hover:scale-105 shadow-lg"
-              >
-                Book Call
-              </a>
-            </div>
-          </div>
         </div>
       </div>
     </section>
