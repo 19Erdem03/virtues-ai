@@ -53,8 +53,7 @@ function ProblemSection({ onBookCall }) {
           </div>
           
           <h2 className="text-4xl md:text-6xl font-bold text-black mb-6 tracking-tight">
-            You're On The Roof.
-            <span className="block text-blue-600">Your Phone's Ringing.</span>
+            Tired of <span className="text-blue-600">Missing Jobs</span> Over Missed Calls?
           </h2>
           
           <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
