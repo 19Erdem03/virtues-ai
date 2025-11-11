@@ -71,7 +71,7 @@ function AboutUs() {
 
         <div
           ref={contentRef}
-          className={`transition-all duration-800 max-w-4xl mx-auto mb-16 ${
+          className={`transition-all duration-800 max-w-4xl mx-auto ${
             contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
           }`}
           style={{ transitionDelay: '200ms' }}
@@ -108,44 +108,6 @@ function AboutUs() {
                 </div>
               );
             })}
-          </div>
-        </div>
-
-        <div
-          className={`transition-all duration-800 ${
-            contentVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
-          }`}
-          style={{ transitionDelay: '400ms' }}
-        >
-          <div className="mb-16 max-w-6xl mx-auto">
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-8 md:p-12">
-              <div className="grid md:grid-cols-2 gap-8 md:gap-12 items-center">
-                <div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-black mb-6 tracking-wide">
-                    Who I Am
-                  </h3>
-                  <p className="text-gray-700 text-lg leading-relaxed tracking-wide mb-6">
-                    Hi! My name is Erdem. I'm an AI automation specialist who helps roofing contractors capture every lead and grow their business through intelligent automation.
-                  </p>
-                  <p className="text-gray-700 text-lg leading-relaxed tracking-wide mb-6">
-                    I've seen too many roofers lose jobs simply because they couldn't answer the phone. That's why I developed a solution specifically for the roofing industry to ensure you never miss a call or a job again.
-                  </p>
-                  <p className="text-gray-700 text-lg leading-relaxed tracking-wide">
-                    My goal is simple: help roofers answer every call, qualify every lead, and book more jobs automatically.
-                  </p>
-                </div>
-                <div className="flex justify-center">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-blue-600 rounded-full blur-xl opacity-20"></div>
-                    <img
-                      src="https://i.imgur.com/2WKsK7z.jpeg"
-                      alt="Erdem - AI Specialist"
-                      className="relative w-64 h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-white shadow-2xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>
