@@ -66,15 +66,15 @@ function RoofingSections({ onBookCall }) {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3 text-gray-800">
                   <span className="text-red-600 font-bold">•</span>
-                  <span className="text-lg font-medium">Lose $8,000+ jobs to competitors</span>
+                  <span className="text-lg font-medium">Let competitors answer your calls</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-800">
                   <span className="text-red-600 font-bold">•</span>
-                  <span className="text-lg font-medium">67% of callers never call back</span>
+                  <span className="text-lg font-medium">Send emergency calls to voicemail</span>
                 </li>
                 <li className="flex items-start gap-3 text-gray-800">
                   <span className="text-red-600 font-bold">•</span>
-                  <span className="text-lg font-medium">Miss 35% of after-hours emergency jobs</span>
+                  <span className="text-lg font-medium">Keep losing customers to the first roofer who picks up</span>
                 </li>
               </ul>
             </div>
@@ -91,15 +91,15 @@ function RoofingSections({ onBookCall }) {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
                   <span className="font-bold">•</span>
-                  <span className="text-lg font-semibold">Capture 100% of incoming leads</span>
+                  <span className="text-lg font-semibold">Answer every call on first ring</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold">•</span>
-                  <span className="text-lg font-semibold">Book 2x more jobs without hiring</span>
+                  <span className="text-lg font-semibold">Qualify leads while you work</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold">•</span>
-                  <span className="text-lg font-semibold">Close $50,000+ more revenue monthly</span>
+                  <span className="text-lg font-semibold">Never let a potential customer go unanswered</span>
                 </li>
               </ul>
 
