@@ -97,7 +97,7 @@ function ProblemSection({ onBookCall }) {
               Never Lose a Job to a Missed Call Again
             </h3>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Our AI answers every call, qualifies the lead, and books the estimate. You just show up and close.
+              Our tool answers every call, qualifies the lead, and books the estimate. You just show up and close.
             </p>
           </div>
 
