@@ -94,10 +94,10 @@ function ProblemSection({ onBookCall }) {
         <div className="mb-16">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-5xl font-bold text-black mb-4 tracking-tight">
-              Let Our Tool Answer Customer Calls <span className="text-blue-600">for You</span>
+              Never Lose a Job to a Missed Call Again
             </h3>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Stop losing jobs to missed calls. Our AI handles every call so you can focus on roofing.
+              Our AI answers every call, qualifies the lead, and books the estimate. You just show up and close.
             </p>
           </div>
 
