@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Shield, TrendingUp, Phone, CheckCircle, ArrowUp, ChevronDown } from 'lucide-react';
+import { Shield, TrendingUp, Phone, CheckCircle, ChevronDown } from 'lucide-react';
 
 const faqData = [
   {
@@ -68,12 +68,6 @@ function CombinedSection({ onBookCall, faqs = faqData }) {
     setOpenFaq(openFaq === index ? null : index);
   };
 
-  const handleBookCall = () => {
-    if (onBookCall) {
-      onBookCall();
-    }
-  };
-
   return (
     <>
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white relative overflow-hidden">
@@ -134,7 +128,7 @@ function CombinedSection({ onBookCall, faqs = faqData }) {
                       More Jobs Booked
                     </h4>
                     <p className="text-gray-600">
-                      Instant lead qualification and appointment booking means more estimates and closed deals
+                      Automatic appointment booking means more estimates and closed deals
                     </p>
                   </div>
 
@@ -151,44 +145,6 @@ function CombinedSection({ onBookCall, faqs = faqData }) {
                   </div>
                 </div>
 
-                <div className="bg-blue-50 border-2 border-blue-200 rounded-xl p-6 md:p-8">
-                  <h4 className="text-xl md:text-2xl font-bold text-black mb-6 text-center">
-                    What You Get:
-                  </h4>
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">48 Hour Setup:</strong> Your system will be answering calls within 2 business days
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">24/7 Call Handling:</strong> Never miss another roofing lead, even at 2 AM when storms hit
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Instant Lead Qualification:</strong> Filters out tire kickers so you only talk to serious customers
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Automatic Appointment Booking:</strong> Schedules inspections directly into your calendar
-                      </p>
-                    </div>
-                    <div className="flex items-start gap-3 md:gap-4">
-                      <CheckCircle className="w-7 h-7 md:w-6 md:h-6 text-blue-600 flex-shrink-0 mt-1" />
-                      <p className="text-gray-700 text-base md:text-lg leading-relaxed">
-                        <strong className="text-lg md:text-lg">Real Time Dashboard:</strong> See every call, every lead, and every appointment as they happen
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
                 <div className="mt-8 text-center">
                   <p className="text-gray-600 text-lg italic">
                     "We do not get paid unless you capture more leads. That is how confident we are in our system."
@@ -196,28 +152,6 @@ function CombinedSection({ onBookCall, faqs = faqData }) {
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h3 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-              Stop Losing Roofing Jobs Today
-            </h3>
-            <p className="text-lg text-gray-700 leading-relaxed max-w-3xl mx-auto mb-8">
-              Every missed call is a lost roofing job going to your competitor. Our system answers every call in 2 rings, qualifies every lead, and books appointments automatically. While other roofers are losing leads, you will be capturing every single one. Schedule your free demo call today and see exactly how it handles roofing calls. No credit card required, no pressure, just a real demonstration of how you will never miss another lead.
-            </p>
-            <button
-              onClick={handleBookCall}
-              className="group relative px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-lg text-lg transition-all duration-300 hover:scale-105 tracking-wide shadow-lg hover:shadow-blue-500/20"
-            >
-              <div className="flex items-center justify-center gap-3">
-                <ArrowUp className="w-5 h-5" />
-                <span>Get Your Free Demo</span>
-              </div>
-            </button>
           </div>
         </div>
       </section>
