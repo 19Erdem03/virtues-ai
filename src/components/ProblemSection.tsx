@@ -55,11 +55,6 @@ function ProblemSection({ onBookCall }) {
           <h2 className="text-4xl md:text-6xl font-bold text-black mb-6 tracking-tight">
             Tired of <span className="text-blue-600">Missing Jobs</span> Over Missed Calls?
           </h2>
-          
-          <p className="text-xl md:text-2xl text-gray-700 max-w-4xl mx-auto leading-relaxed">
-            That homeowner moves on to the next roofer. 
-            <span className="font-bold text-blue-600"> They book. You lose $8,000+.</span>
-          </p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 mb-16">
