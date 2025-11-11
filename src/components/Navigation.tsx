@@ -60,10 +60,10 @@ function Navigation({ onBookCall, onCookiePolicy, onPrivacyPolicy, onTermsOfServ
               About Us
             </button>
             <button
-              onClick={() => scrollToSection('features')}
+              onClick={() => scrollToSection('about')}
               className="text-gray-600 hover:text-black transition-colors duration-200 tracking-wide"
             >
-              Why Choose Us
+              How It Works
             </button>
             <a
               href="https://www.linkedin.com/company/virtues-ai/"
@@ -124,10 +124,10 @@ function Navigation({ onBookCall, onCookiePolicy, onPrivacyPolicy, onTermsOfServ
                 About Us
               </button>
               <button
-                onClick={() => scrollToSection('features')}
+                onClick={() => scrollToSection('about')}
                 className="text-left text-gray-600 hover:text-black transition-colors duration-200 tracking-wide"
               >
-                Why Choose Us
+                How It Works
               </button>
               <a
                 href="https://www.linkedin.com/company/virtues-ai/"
