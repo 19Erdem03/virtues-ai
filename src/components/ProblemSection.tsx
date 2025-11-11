@@ -103,7 +103,7 @@ function ProblemSection({ onBookCall }) {
               Let Our Tool Answer Customer Calls <span className="text-blue-600">for You</span>
             </h3>
             <p className="text-xl text-gray-700 max-w-3xl mx-auto">
-              Stop losing jobs to missed calls. Our AI handles every call so you can focus on roofing.
+              Stop losing jobs to missed calls. Our technology handles every call so you can focus on roofing.
             </p>
           </div>
 
