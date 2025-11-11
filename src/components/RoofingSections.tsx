@@ -50,47 +50,40 @@ function RoofingSections({ onBookCall }) {
       <section className="py-20 bg-gradient-to-br from-blue-50 to-white">
         <div className="max-w-7xl mx-auto px-6">
           <h2 className="text-4xl md:text-6xl font-bold text-center mb-16 text-black">
-            The Choice Is <span className="text-blue-600">Yours</span>
+            Miss jobs or book them. <span className="text-blue-600">Your call.</span>
           </h2>
 
           <div className="grid md:grid-cols-2 gap-8">
             {/* Do Nothing - Left Side */}
-            <div className="bg-white border-2 border-red-300 rounded-2xl p-8 shadow-lg">
+            <div className="bg-white border-4 border-red-500 rounded-2xl p-8 shadow-xl">
               <div className="flex items-center gap-4 mb-8">
-                <div className="w-12 h-12 rounded-full bg-red-100 border-2 border-red-300 flex items-center justify-center">
-                  <X className="w-7 h-7 text-red-600" />
+                <div className="w-12 h-12 rounded-full bg-red-500 border-2 border-red-600 flex items-center justify-center">
+                  <X className="w-7 h-7 text-white" />
                 </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-red-900">Do nothing</h3>
+                <h3 className="text-2xl md:text-3xl font-bold text-red-700">Do nothing</h3>
               </div>
 
               <ul className="space-y-4 mb-8">
-                <li className="flex items-start gap-3 text-gray-700">
+                <li className="flex items-start gap-3 text-gray-800">
                   <span className="text-red-600 font-bold">•</span>
-                  <span className="text-lg">Keep losing jobs</span>
+                  <span className="text-lg font-medium">Lose $8,000+ jobs to competitors</span>
                 </li>
-                <li className="flex items-start gap-3 text-gray-700">
+                <li className="flex items-start gap-3 text-gray-800">
                   <span className="text-red-600 font-bold">•</span>
-                  <span className="text-lg">Keep missing calls</span>
+                  <span className="text-lg font-medium">67% of callers never call back</span>
                 </li>
-                <li className="flex items-start gap-3 text-gray-700">
+                <li className="flex items-start gap-3 text-gray-800">
                   <span className="text-red-600 font-bold">•</span>
-                  <span className="text-lg">Keep staying up at night</span>
+                  <span className="text-lg font-medium">Miss 35% of after-hours emergency jobs</span>
                 </li>
               </ul>
-
-              <button
-                disabled
-                className="w-full py-4 bg-red-100 text-red-600 font-bold rounded-lg text-lg cursor-not-allowed border-2 border-red-300"
-              >
-                Keep Losing Jobs
-              </button>
             </div>
 
             {/* Never Miss a Call - Right Side */}
-            <div className="bg-blue-600 text-white rounded-2xl p-8 shadow-lg">
+            <div className="bg-blue-700 text-white rounded-2xl p-8 shadow-xl">
               <div className="flex items-center gap-4 mb-8">
                 <div className="w-12 h-12 rounded-full bg-white flex items-center justify-center">
-                  <CheckCircle className="w-7 h-7 text-blue-600" />
+                  <CheckCircle className="w-7 h-7 text-blue-700" />
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold">Never Miss a Call Again</h3>
               </div>
@@ -98,25 +91,31 @@ function RoofingSections({ onBookCall }) {
               <ul className="space-y-4 mb-8">
                 <li className="flex items-start gap-3">
                   <span className="font-bold">•</span>
-                  <span className="text-lg font-semibold">Every call answered</span>
+                  <span className="text-lg font-semibold">Capture 100% of incoming leads</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold">•</span>
-                  <span className="text-lg font-semibold">No more staffing headaches</span>
+                  <span className="text-lg font-semibold">Book 2x more jobs without hiring</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="font-bold">•</span>
-                  <span className="text-lg font-semibold">You sleep — it works</span>
+                  <span className="text-lg font-semibold">Close $50,000+ more revenue monthly</span>
                 </li>
               </ul>
 
               <button
                 onClick={onBookCall}
-                className="w-full py-4 bg-white text-blue-600 font-bold rounded-lg text-lg hover:bg-blue-50 transition-colors duration-200 flex items-center justify-center gap-2"
+                className="w-full py-4 bg-white text-blue-700 font-bold rounded-lg text-lg hover:bg-blue-50 transition-colors duration-200 flex items-center justify-center gap-2"
               >
                 Get Your Free Demo
                 <ArrowRight className="w-5 h-5" />
               </button>
+              
+              <div className="mt-4 text-center">
+                <p className="text-blue-100 text-sm">
+                  Start with a <span className="font-bold text-white">Free 7-Day Pilot</span> - No credit card required
+                </p>
+              </div>
             </div>
           </div>
         </div>
