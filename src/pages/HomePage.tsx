@@ -8,7 +8,7 @@ import Footer from '../components/Footer';
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-white">
+    <>
       <Hero />
       <Problem />
       <Solution />
@@ -16,6 +16,6 @@ export default function HomePage() {
       <HowItWorks />
       <CTA />
       <Footer />
-    </div>
+    </>
   );
 }
