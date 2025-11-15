@@ -30,7 +30,7 @@ export default function Hero() {
           <div className="flex justify-center">
             <Link to="/contact" className="group relative bg-gradient-to-r from-blue-600 to-blue-700 text-white px-8 py-4 rounded-lg font-semibold text-lg transition-all duration-200 shadow-xl hover:shadow-2xl hover:scale-105 flex items-center gap-2 overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-r from-blue-700 to-blue-800 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
-              <span className="relative">Book Yur Free Demo</span>
+              <span className="relative">Book Your Free Demo</span>
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform relative" />
             </Link>
           </div>
