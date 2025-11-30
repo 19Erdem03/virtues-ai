@@ -20,12 +20,14 @@ export default function ContactPage() {
     setError('');
 
     try {
-      const apiUrl = `${import.meta.env.VITE_SUPABASE_URL}/functions/v1/contact-webhook`;
+      // Post directly to Make webhook instead of Supabase edge function
+      const apiUrl =
+        import.meta.env.VITE_MAKE_WEBHOOK_URL ||
+        'https://hook.eu2.make.com/ugfde8bbb95a6ic07vhsr2xrg6hc7dos';
 
       const response = await fetch(apiUrl, {
         method: 'POST',
         headers: {
-          'Authorization': `Bearer ${import.meta.env.VITE_SUPABASE_ANON_KEY}`,
           'Content-Type': 'application/json',
         },
         body: JSON.stringify(formData),
