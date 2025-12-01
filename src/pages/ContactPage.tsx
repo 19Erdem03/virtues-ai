@@ -16,8 +16,18 @@ export default function ContactPage() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setIsSubmitting(true);
     setError('');
+
+    const name = formData.name.trim();
+    const company = formData.company.trim();
+    const email = formData.email.trim();
+
+    if (!name || !company || !email) {
+      setError('Please fill in your name, company, and email.');
+      return;
+    }
+
+    setIsSubmitting(true);
 
     try {
       // Post directly to Make webhook instead of Supabase edge function
@@ -30,7 +40,12 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          ...formData,
+          name,
+          company,
+          email,
+        }),
       });
 
       if (!response.ok) {
