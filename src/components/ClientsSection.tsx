@@ -1,3 +1,5 @@
+import { Star } from 'lucide-react';
+
 export default function ClientsSection() {
   const clients = [
     {
@@ -13,9 +15,13 @@ export default function ClientsSection() {
   ];
 
   return (
-    <section className="py-20 px-4 bg-gradient-to-b from-white to-blue-50">
+    <section className="py-20 px-4 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
+          <div className="inline-flex items-center space-x-2 bg-amber-100 text-amber-700 px-4 py-2 rounded-full mb-6 font-medium">
+            <Star className="w-4 h-4 fill-current" />
+            <span>Trusted Partners</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-4">
             Businesses We've Worked With
           </h2>
@@ -28,15 +34,15 @@ export default function ClientsSection() {
           {clients.map((client) => (
             <div
               key={client.name}
-              className="bg-white rounded-2xl p-12 shadow-lg hover:shadow-xl transition-all duration-300 flex flex-col items-center justify-center border-2 border-blue-100 hover:border-blue-300"
+              className="bg-white rounded-2xl p-12 shadow-lg hover:shadow-2xl transition-all duration-300 flex flex-col items-center justify-center border-2 border-gray-200 hover:border-blue-300 hover:-translate-y-1 group"
             >
-              <h3 className="text-xl font-bold text-gray-900 mb-6 text-center">
+              <h3 className="text-xl font-bold text-gray-900 mb-6 text-center group-hover:text-blue-600 transition-colors">
                 {client.name}
               </h3>
               <img
                 src={client.logo}
                 alt={client.name}
-                className={`${client.size} w-auto object-contain`}
+                className={`${client.size} w-auto object-contain transition-transform group-hover:scale-105`}
               />
             </div>
           ))}
