@@ -33,11 +33,7 @@ export default function FAQSection() {
       question: 'What if I don\'t like it after the trial?',
       answer: 'No problem! Simply let us know before the 7 days are up and you won\'t be charged. No contracts, no commitments. We also offer a 30-day money-back guarantee if you subscribe and change your mind later.',
     },
-    {
-      question: 'Can I use my existing phone number?',
-      answer: 'Absolutely. We can forward your existing business number to the AI, or the AI can be an additional line that handles overflow and after-hours calls while your team handles regular business hours. You have complete flexibility.',
-    },
-  ];
+   ];
 
   return (
     <section id="faq" className="py-20 px-4 bg-gradient-to-b from-white to-gray-50">
